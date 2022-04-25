@@ -1,0 +1,23 @@
+version: '3.7'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  rabbitmq:
+    image: 'rabbitmq'
+    # volumes:
+    # - ./rabbitmq-persistence:/bitnami:rw
+    ports:
+      - "15672:15672"
+      # - "5672:5672"
+      - "6666:5672"
+    container_name: rabbitmq
+    networks:
+      - app-tier
+  # myapp:
+  #   image: 'python'
+  #   container_name: ingest    
+  #   networks:
+  #     - app-tier
